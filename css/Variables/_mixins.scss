@@ -1,0 +1,13 @@
+@mixin size-container{
+    width:$ancho-cont; 
+    margin: $margen-cont;
+    max-width: $ancho-max;
+}
+@mixin size-container-resp{
+    width:$ancho-cont-resp; 
+    margin: $margen-cont-resp;
+    max-width: $ancho-max-resp;
+}
+@mixin boton-site-hover{
+    transition: all 0.3s ease-in;
+}
