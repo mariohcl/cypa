@@ -35,3 +35,83 @@
 </head>
 
 <body>
+
+    <header class="main-header">
+        <section class="main-header-top">
+            <section class="main-header-top">
+                <a href=""><i class="fas fa-envelope"></i>Contacto: contacto@cypa.cl</a>
+
+                <a href=""><i class="fab fa-whatsapp"></i> +56 9 9050 2003</a>
+            </section>
+        </section>
+
+        <section class="main-header-menu">
+            <section class="main-header-center">
+                <a href="">
+                    <img src="images/logo-cypa.png" alt="">
+                </a>
+
+                <nav class="main-nav">
+                    <ul>
+                        <li>
+                            <a href="">HOME</a>
+                        </li>
+
+                        <li>
+                            <a href="">NUESTRO ENFOQUE</a>
+                        </li>
+
+                        <li>
+                            <a href="">nuestros clientes</a>
+                        </li>
+
+                        <li>
+                            <a href="">testimonios</a>
+                        </li>
+
+                        <li>
+                            <a href="">contacto</a>
+                        </li>
+
+                    </ul>
+                </nav>
+            </section>
+        </section>
+
+    </header>
+
+    <header id="main-header" class="main-header main-header-fixed">
+        <section class="main-header-menu">
+            <section class="main-header-center">
+                <a href="">
+                    <img src="images/logo-cypa.png" alt="">
+                </a>
+
+                <nav class="main-nav">
+                    <ul>
+                        <li>
+                            <a href="">HOME</a>
+                        </li>
+
+                        <li>
+                            <a href="">NUESTRO ENFOQUE</a>
+                        </li>
+
+                        <li>
+                            <a href="">nuestros clientes</a>
+                        </li>
+
+                        <li>
+                            <a href="">testimonios</a>
+                        </li>
+
+                        <li>
+                            <a href="">contacto</a>
+                        </li>
+
+                    </ul>
+                </nav>
+            </section>
+        </section>
+
+    </header>

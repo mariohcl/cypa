@@ -1,7 +1,7 @@
 @import "variables/_variables.scss";
 @import "variables/_mixins.scss";
 
-@import url("https://fonts.googleapis.com/css2?family=PT+Serif:ital,wght@0,400;0,700;1,400;1,700&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=PT+Serif:ital,wght@0,300;0,400;0,700;1,400;1,700&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
 
 * {
   margin: 0;
@@ -16,13 +16,139 @@ body {
   min-height: 100vh;
 }
 
-h1 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   font-family: "PT Serif", serif;
+
+  span {
+    font-family: "PT Serif", serif;
+  }
 }
 p,
-a {
+a,
+span {
   font-family: "Poppins", sans-serif;
 }
+
+//** HEADER **//
+.main-header {
+  width: 100%;
+  position: absolute;
+  top: 0;
+  z-index: 999;
+  .main-header-top {
+    width: 100%;
+    background-color: $main-blue;
+    .main-header-top {
+      @include size-container;
+      display: flex;
+      justify-content: space-between;
+      padding: 10px 0;
+      a {
+        color: white;
+        font-weight: 600;
+        font-size: 0.8rem;
+        text-decoration: none;
+        i {
+          color: #b7895f;
+          margin-right: 5px;
+        }
+      }
+    }
+  }
+
+  .main-header-menu {
+    width: 100%;
+    .main-header-center {
+      @include size-container;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 0;
+      a {
+        width: 150px;
+        img {
+          width: 100%;
+          height: 100%;
+          object-fit: contain;
+        }
+      }
+
+      .main-nav {
+        ul {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          li {
+            margin-left: 20px;
+            a {
+              color: white;
+              text-decoration: none;
+              font-weight: 500;
+              font-size: 0.8rem;
+              text-transform: uppercase;
+            }
+
+            &:last-child {
+              background-color: $main-pink;
+              padding: 14px 25px;
+              border-radius: 5px;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+.main-header-fixed {
+  top: -100%;
+}
+.main-header-fixed-active {
+  top: 0;
+}
+
+.main-header-fixed,
+.main-header-fixed-active {
+  position: fixed;
+  background-color: white;
+  transition: top 0.9s cubic-bezier(0.77, 0, 0.175, 1);
+
+  .main-header-menu {
+    .main-header-center {
+      a {
+        width: 100px;
+        img {
+          width: 100%;
+          height: 100%;
+          object-fit: contain;
+        }
+      }
+
+      .main-nav {
+        ul {
+          li {
+            a {
+              color: $main-blue;
+            }
+
+            &:last-child {
+              a {
+                color: white;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+//** HEADER **//
 
 //** MAIN SECTION **//
 
@@ -96,7 +222,7 @@ a {
     position: absolute;
     top: 0;
     z-index: 98;
-    background-image: linear-gradient(rgba(0, 0, 0, 0), rgb(0, 0, 0));
+    background-image: linear-gradient(rgba(0, 0, 0, 0.2), rgb(0, 0, 0));
   }
   img {
     width: 100%;
@@ -104,6 +230,7 @@ a {
     position: absolute;
     top: 0;
     z-index: 97;
+    object-fit: cover;
   }
 }
 
@@ -116,37 +243,20 @@ a {
   z-index: 99;
   .cards-center {
     @include size-container;
+
     margin-top: -70px;
     .cards-grid {
       display: flex;
       justify-content: space-between;
+
       .single-card {
         width: 30%;
-        height: 260px;
+        height: 290px;
         background-color: $main-blue;
 
         &:nth-child(2) {
           position: relative;
 
-          .card-info {
-            width: 90%;
-            z-index: 99;
-            height: 70px;
-            background: white;
-            bottom: 0;
-            position: absolute;
-            padding: 0;
-            h1 {
-              color: $main-blue;
-            }
-            figure {
-              position: inherit;
-              img {
-                width: 100%;
-                height: 100%;
-              }
-            }
-          }
           img {
             width: 100%;
             height: 100%;
@@ -167,16 +277,37 @@ a {
           h1 {
             font-weight: 500;
             color: white;
-            font-size: 1.2rem;
-            margin-bottom: 10px;
+            font-size: 1.1rem;
+            white-space: pre-line;
+            text-transform: uppercase;
           }
           p {
             font-size: 0.75rem;
             color: white;
             font-weight: 400;
             line-height: 1rem;
+            margin: 20px 0;
           }
           a {
+            color: $main-pink;
+            text-decoration: none;
+            text-transform: uppercase;
+            font-weight: 600;
+            font-size: 0.8rem;
+            position: relative;
+            margin-left: 35px;
+
+            &:before {
+              content: "";
+              display: block;
+              height: 1px;
+              width: 30px;
+              background-color: $main-pink;
+              margin-left: -35px;
+              /* margin-top: 10px; */
+              position: absolute;
+              top: 5px;
+            }
           }
           figure {
             position: absolute;
@@ -194,10 +325,717 @@ a {
             }
           }
         }
+
+        .card-info-sec {
+          position: absolute;
+          z-index: 99;
+          background: white;
+          display: flex;
+          align-items: center;
+          width: 90%;
+          margin-left: 10%;
+          bottom: 0;
+
+          figure {
+            width: 70px;
+            height: 70px;
+            min-width: 70px;
+            min-height: 70px;
+            background: $main-pink;
+            margin-right: 10px;
+
+            img {
+              position: inherit;
+            }
+          }
+
+          h1 {
+            font-weight: 500;
+            font-size: 1.1rem;
+            color: $main-blue;
+          }
+        }
         // También puede haber single-card sin card-info
       }
     }
   }
 }
 
+.card-ligthbox {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  z-index: 9999;
+  background: #000000db;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  button {
+    top: 20px;
+    right: 20px;
+    background: none;
+    border: none;
+    color: white;
+    font-size: 1.5rem;
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    cursor: pointer;
+  }
+  .content-lightbox {
+    width: 900px;
+    max-width: 900px;
+    background: #002856db;
+    padding: 50px;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    img {
+    }
+    p {
+      color: white;
+      line-height: 1.2rem;
+      font-size: 0.9rem;
+      text-align: center;
+    }
+  }
+}
+
 //** CARDS SECTION **//
+
+//** INFO SECTION **//
+.wrap-info {
+  width: 100%;
+  margin: 80px 0 50px;
+  .info-center {
+    @include size-container;
+    .info-grid {
+      display: flex;
+      justify-content: space-between;
+      .single-info {
+        width: 30%;
+        h2 {
+          color: $main-blue;
+          font-weight: 300;
+          font-size: 1.5rem;
+          text-transform: uppercase;
+          white-space: pre-line;
+          span {
+            color: $main-pink;
+            font-family: "PT Serif", serif;
+          }
+        }
+
+        p {
+          font-size: 0.75rem;
+          color: $main-blue;
+          line-height: 1.4rem;
+          margin-top: 10px;
+        }
+
+        a {
+          font-size: 0.8rem;
+          display: flex;
+          align-items: center;
+          margin-top: 50px;
+          background-color: $main-pink;
+          color: white;
+          text-decoration: none;
+          width: fit-content;
+          padding-right: 20px;
+          figure {
+            background-color: $main-blue;
+            width: 60px;
+            height: 60px;
+            margin-right: 10px;
+            padding: 5px;
+            img {
+              width: 100%;
+              height: 100%;
+            }
+          }
+        }
+
+        h3 {
+          font-family: "Poppins", sans-serif;
+          font-size: 0.9rem;
+          color: $main-blue;
+          text-transform: uppercase;
+
+          span {
+            color: $main-pink;
+          }
+        }
+
+        .contact-info {
+          display: flex;
+          align-items: center;
+          img {
+            width: 60px;
+            height: 60px;
+            margin-right: 10px;
+          }
+
+          .contact-info-text {
+            span {
+              color: $main-blue;
+              font-size: 0.8rem;
+              font-weight: 600;
+            }
+            p {
+              color: $main-blue;
+              font-size: 0.8rem;
+              line-height: inherit;
+              margin: 5px 0 0 0;
+            }
+          }
+        }
+
+        .contact-first {
+          margin-top: 20px;
+        }
+
+        .wpcf7-form {
+          margin-top: 20px;
+
+          & input[type="text"],
+          & input[type="email"],
+          & textarea {
+            width: 100%;
+            border: none;
+            padding: 1rem;
+            margin-bottom: 8px;
+            font-size: 0.7rem;
+            font-weight: 500;
+            color: #afafaf;
+            font-family: "Poppins", sans-serif;
+            transition: all 0.4s ease;
+            background: #f3f3f3;
+          }
+
+          ::-webkit-input-placeholder {
+            /* WebKit browsers */
+            font-family: "Poppins", sans-serif;
+            color: #696969 !important;
+            opacity: 1;
+          }
+          :-moz-placeholder {
+            /* Mozilla Firefox 4 to 18 */
+            font-family: "Poppins", sans-serif;
+            color: #000 !important;
+            opacity: 1;
+          }
+          ::-moz-placeholder {
+            /* Mozilla Firefox 19+ */
+            font-family: "Poppins", sans-serif;
+            color: #000 !important;
+            opacity: 1;
+          }
+          :-ms-input-placeholder {
+            /* Internet Explorer 10+ */
+            font-family: "Poppins", sans-serif;
+            color: #646464 !important;
+            opacity: 1;
+          }
+
+          & input[type="text"]:focus,
+          & input[type="email"]:focus,
+          & textarea.wpcf7-textarea:focus {
+            background-color: $main-blue;
+            color: white;
+            padding-left: 3em;
+            outline: 0px;
+            font-weight: 500;
+          }
+
+          & input[type="submit"] {
+            background: $main-pink;
+            text-transform: uppercase;
+            font-weight: 600;
+            border: none;
+            color: white;
+            padding: 1rem 3rem;
+            font-size: 0.75rem;
+            margin: 3% 2%;
+            cursor: pointer;
+            border-radius: 5px;
+            font-family: "Poppins", sans-serif;
+          }
+        }
+      }
+    }
+  }
+}
+//** INFO SECTION **//
+
+//** CONCEPT SECTION **//
+
+.concept-one {
+  width: 100%;
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  margin: 150px 0 0 0;
+
+  .content-section {
+    width: 50%;
+    background-color: white;
+    position: relative;
+
+    .info-section {
+      position: absolute;
+      background: white;
+      width: 100%;
+      height: 100%;
+      right: -100px;
+      top: 100px;
+      padding: 70px;
+      text-align: right;
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      figure {
+        width: 100px;
+        height: 100px;
+        background-color: $main-pink;
+        position: absolute;
+        right: 0;
+        top: 0;
+        padding: 15px;
+        img {
+          width: 100%;
+        }
+      }
+
+      .info-section-text {
+        text-align: right;
+        h3 {
+          text-transform: uppercase;
+          color: $main-pink;
+          font-weight: 100;
+          font-size: 1rem;
+        }
+        h2 {
+          text-transform: uppercase;
+          font-weight: 100;
+          color: $main-blue;
+          font-size: 2rem;
+          white-space: pre-line;
+          margin: 20px 0;
+          line-height: 2.5rem;
+        }
+        p {
+          font-size: 0.8rem;
+          color: $textos;
+          white-space: pre-line;
+          line-height: 1.3rem;
+
+          &.prev-list {
+            text-align: left;
+          }
+          &.list {
+            margin-top: 20px;
+            text-align: left;
+            span {
+              font-weight: 500;
+              color: $main-pink;
+            }
+          }
+        }
+        a {
+          display: block;
+          color: $main-pink;
+          text-decoration: none;
+          text-transform: uppercase;
+          font-weight: 600;
+          font-size: 0.8rem;
+          position: relative;
+          margin-top: 20px;
+        }
+      }
+    }
+
+    .info-section-sec {
+      justify-content: flex-end;
+      align-items: flex-end;
+
+      @media only screen and (max-width: $laptop-1) {
+        height: inherit;
+        padding-top: 150px;
+      }
+    }
+  }
+
+  img {
+    width: 50%;
+  }
+}
+
+//** CONCEPT SECTION **//
+
+//** AREAS SECTION **//
+.wrap-areas {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 150px 0;
+  h3 {
+    font-size: 1rem;
+    color: $main-pink;
+    font-weight: 100;
+    text-transform: uppercase;
+    white-space: pre-line;
+    text-align: center;
+  }
+  h2 {
+    font-size: 2rem;
+    color: $main-blue;
+    font-weight: 100;
+    text-transform: uppercase;
+    white-space: pre-line;
+    text-align: center;
+    margin: 30px 0;
+    line-height: 2.5rem;
+  }
+
+  .wrap-areas-center {
+    @include size-container;
+    margin-top: 80px;
+    .areas-grid {
+      display: flex;
+      justify-content: space-between;
+      .areas-single {
+        width: 30%;
+        height: 400px;
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        padding-top: 150px;
+        background-color: $main-blue;
+        .tit-card {
+          background-color: $main-blue;
+          position: relative;
+          z-index: 99;
+          height: 70px;
+          width: 90%;
+          margin-left: 10%;
+          display: flex;
+          align-items: center;
+          figure {
+            width: 70px;
+            height: 70px;
+            background: $main-pink;
+            margin: 0 10px 0 0;
+            img {
+              width: 100%;
+              height: 100%;
+              position: inherit;
+            }
+          }
+          h3 {
+            font-size: 1rem;
+            color: #ffffff;
+            font-weight: 100;
+            text-transform: uppercase;
+            white-space: pre-line;
+            text-align: center;
+          }
+        }
+
+        .content-card {
+          background-color: $main-blue;
+          position: relative;
+          z-index: 99;
+          height: 150px;
+          padding: 30px;
+
+          p {
+            font-size: 0.8rem;
+            color: white;
+            line-height: 1.2rem;
+          }
+          a {
+            color: $main-pink;
+            text-decoration: none;
+            text-transform: uppercase;
+            font-weight: 600;
+            font-size: 0.8rem;
+            position: relative;
+            margin-left: 35px;
+            display: block;
+            margin-top: 20px;
+
+            &:before {
+              content: "";
+              display: block;
+              height: 1px;
+              width: 30px;
+              background-color: #d3045f;
+              margin-left: -35px;
+              margin-top: 5px;
+              position: absolute;
+            }
+          }
+        }
+
+        img {
+          position: absolute;
+          top: 0;
+          width: 100%;
+          height: 60%;
+          object-fit: cover;
+        }
+      }
+    }
+  }
+}
+
+//** AREAS SECTION **//
+
+//** TEAM SECTION **//
+.wrap-team {
+  width: 100%;
+  margin: 200px 0 150px;
+  .wrap-team-center {
+    @include size-container;
+    h3 {
+      font-size: 1rem;
+      color: $main-pink;
+      font-weight: 100;
+      text-transform: uppercase;
+      white-space: pre-line;
+    }
+    h2 {
+      font-size: 2rem;
+      color: $main-blue;
+      line-height: 2.5rem;
+      font-weight: 100;
+      text-transform: uppercase;
+      white-space: pre-line;
+      margin: 15px 0 0 0;
+    }
+
+    .grid-team {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 30px;
+
+      .grid-team-single {
+        width: 19%;
+        img {
+          width: 100%;
+          height: 250px;
+          object-fit: cover;
+        }
+        h2 {
+          font-size: 1.2rem;
+          color: $main-pink;
+          margin: 10px 0 5px 0;
+        }
+        h4 {
+          font-size: 0.8rem;
+          color: $main-blue;
+          font-weight: 400;
+          font-family: "Poppins", sans-serif;
+        }
+      }
+    }
+  }
+}
+
+//** TEAM SECTION **//
+//** LOGOS SECTION **//
+.wrap-logos {
+  width: 100%;
+  .wrap-logos-center {
+    @include size-container;
+    display: flex;
+    justify-content: center;
+    img {
+      width: 15%;
+      margin: 10px;
+    }
+  }
+}
+//** LOGOS SECTION **//
+//** CONCEPT SEC SECTION **//
+.concept-sec {
+  margin: 150px 0 0;
+  width: 100%;
+  height: 600px;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  .concept-sec-center {
+    @include size-container;
+    position: relative;
+    z-index: 99;
+    text-align: center;
+    h2 {
+      color: white;
+      text-transform: uppercase;
+      text-align: center;
+      white-space: pre-line;
+      font-size: 2rem;
+      line-height: 2.5rem;
+      font-weight: 100;
+      margin-bottom: 20px;
+    }
+    p {
+      color: white;
+      text-align: center;
+      white-space: pre-line;
+      font-size: 0.8rem;
+      font-weight: 400;
+      line-height: 1.5rem;
+    }
+    a {
+      background-color: $main-pink;
+      color: white;
+      padding: 1.1rem 2rem;
+      display: block;
+      width: fit-content;
+      margin: 30px auto 0;
+      font-size: 0.9rem;
+      text-decoration: none;
+    }
+  }
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    position: absolute;
+    top: 0;
+  }
+}
+
+//** CONCEPT SEC SECTION **//
+
+//** FOOTER **//
+
+.main-footer {
+  width: 100%;
+  position: relative;
+  background-color: $main-blue;
+  padding: 100px 0;
+  .main-footer-center {
+    @include size-container;
+    display: flex;
+    justify-content: space-between;
+    .single-footer-block {
+      width: 24%;
+      position: relative;
+      z-index: 99;
+      img.logo-footer {
+        position: inherit;
+        width: 160px;
+        height: 70px;
+        object-fit: contain;
+        margin-bottom: 20px;
+      }
+
+      .single-info-footer {
+        .contact-info {
+          display: flex;
+          align-items: center;
+          margin-bottom: 20px;
+          img {
+            position: inherit;
+            width: 50px;
+            filter: invert(1);
+            margin-right: 5px;
+          }
+          .contact-info-text {
+            span {
+              font-size: 0.8rem;
+              color: white;
+              font-weight: 600;
+              margin-bottom: 5px;
+              display: block;
+            }
+            p {
+              font-size: 0.8rem;
+              color: white;
+              margin-bottom: 5px;
+            }
+          }
+        }
+      }
+
+      h2 {
+        color: white;
+        font-weight: 100;
+        text-transform: uppercase;
+        font-size: 1rem;
+        margin-top: 60px;
+      }
+
+      .nav-footer {
+        margin-top: 30px;
+        width: 85%;
+        ul {
+          li {
+            padding-bottom: 15px;
+            border-bottom: 1px solid #ffffff42;
+            margin-bottom: 15px;
+            a {
+              text-decoration: none;
+              font-size: 0.8rem;
+              color: white;
+            }
+          }
+        }
+      }
+
+      a.contact-footer {
+        border: 2px solid $main-pink;
+        display: flex;
+        margin: 30px 0;
+        align-items: center;
+        width: fit-content;
+        padding-right: 20px;
+        text-decoration: none;
+        color: white;
+        font-size: 0.9rem;
+        figure {
+          width: 45px;
+          height: 45px;
+          background: $main-pink;
+          margin-right: 10px;
+          img {
+            position: inherit;
+          }
+        }
+      }
+
+      p {
+        font-size: 0.7rem;
+        color: white;
+        line-height: 1.1rem;
+      }
+
+      .creditos {
+        color: $main-pink;
+        font-weight: 500;
+
+        margin-top: 20px;
+      }
+    }
+  }
+
+  img {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    -o-object-fit: cover;
+    object-fit: contain;
+    top: 0;
+  }
+}
+
+//** FOOTER **//
